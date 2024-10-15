@@ -1,0 +1,22 @@
+syntax = "proto3";
+
+package matsui.v1;
+
+import "proto/v1/common/utils.proto";
+
+message RideRequest {
+  string rider_id = 1;
+  string pickup_location = 2;
+  string dropoff_location = 3;
+  string timestamp = 4;
+}
+
+message RideResponse {
+  string ride_id = 1;
+  string status = 2;
+}
+
+service MatsuiService {
+  rpc BookRide(RideRequest) returns (RideResponse);
+  rpc MatchDriver(RideRequest) returns (RideResponse);
+}
